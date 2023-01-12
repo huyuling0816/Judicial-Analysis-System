@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    {% load static %}
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Science</title>
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+
+    <style type="text/css">
+        body{
+            background-image: url({% static 'images/law.jpeg' %});
+            background-repeat: repeat-y;
+            background-size: 100%;
+        }
+
+        h1{
+            text-align: center;
+        }
+
+        h2{
+            text-align: center;
+            position: relative;
+            left: 320px;
+            width: 120px;
+            height: 40px;
+            line-height: 35px;
+            border: 4px double lightskyblue;
+            border-radius: 10px;
+            background: lightslategray;
+            cursor: pointer;
+        }
+
+        #Time{
+            text-align: center;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .button-time{
+            border-radius: 8px;
+            border:4px double rgba(12,17,22,0.97);
+            padding: 12px 20px;
+            font-size: 18px;
+        }
+
+        #key{
+            font-size: 18px;
+            font-family: 宋体,sans-serif;
+        }
+
+        #num{
+            font-size: 16px;
+            font-family: 宋体,sans-serif;
+        }
+
+        #Rep{
+            text-align: center;
+        }
+
+        .reptile{
+            cursor: pointer;
+            width: 150px;
+	        background-color: darkgrey;
+            color: black;
+            padding: 15px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            font-family: 华文楷体,sans-serif;
+            font-weight: bold;
+            border:4px groove snow;
+            border-radius: 8px;
+        }
+
+        .reptile:hover{
+             box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+
+        .reptile:active{
+            box-shadow: 0 5px #666;
+            transform: translateY(3px);
+        }
+
+        .button-text{
+            cursor: pointer;
+            width:200px;
+	        background-color: darkgrey;
+            color: black;
+            padding: 15px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            font-family: 华文楷体,sans-serif;
+            font-weight: bold;
+            border:4px groove snow;
+            border-radius: 20px;
+        }
+
+        .button-text:hover{
+             box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+
+        .button-text:active{
+            box-shadow: 0 5px #666;
+            transform: translateY(3px);
+        }
+
+        #Text{
+            text-align: center;
+        }
+
+        #Word{
+            border: 8px groove snow;
+            font-family: 宋体, sans-serif;
+            font-size:large;
+        }
+
+        .Button1{
+            text-align: center;
+        }
+
+        #upload{
+            cursor: pointer;
+        }
+
+
+        #menu{
+            width: 1200px;
+            height: 700px;
+            margin: 0 auto;
+            text-align: center;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            display: none;
+        }
+
+        #choose{
+            width: 100%;
+            height: 60px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 25px;
+            font-family: 华文楷体,sans-serif;
+            font-weight: bold;
+            overflow: hidden;
+            border-bottom: 5px solid darkgrey;
+        }
+
+        #choose label{
+            float: left;   /*靠左浮动*/
+            height: 56px;
+            overflow: hidden;
+            width: 188px;
+            padding: 0 2px;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            border-left: 4px groove darkgrey;
+            border-right: 4px groove darkgrey;
+            border-top: 4px groove darkgrey;
+            line-height: 56px;
+            background: #6f94c6;
+            cursor: pointer;
+        }
+
+        #choose label:hover{
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+
+        #choose label:active{
+            box-shadow: 0 5px #666;
+            transform: translateY(3px);
+        }
+
+        #choose input{
+            display: none;
+        }
+
+        #choose input:checked{
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+
+        #tab{
+            position: relative;
+            height: 90%;
+            width: 100%;
+        }
+
+
+        #tab section{
+            position: absolute;
+            display: inline-block;
+            border-left: 4px groove darkgrey;    /*菜单栏边框*/
+            border-right: 4px groove darkgrey;
+            border-bottom: 4px groove darkgrey;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            width: 99.3%;
+            height: 100%;
+            background: white;
+            text-align: left;
+        }
+
+        .module{
+            position: relative;
+            display: inline-block;
+            top: 30%;
+            bottom: 80%;
+            left: 10%;
+            height: 100%;
+            width: 100%;
+            column-count: 3;
+            overflow: auto;
+        }
+
+        .module_extra{
+            position: relative;
+            display: inline-block;
+            column-count: 6;
+            column-width: 190px;
+            height: 100%;
+            width: 100%;
+            top: 5%;
+            overflow: auto;
+        }
+
+        #name{
+            left: 0;
+        }
+
+        #gender{
+            left: 100%;
+        }
+
+        #nationality{
+            left: 200%;
+        }
+
+        #birthplace{
+            left: 300%;
+        }
+
+        #crime{
+            left: 400%;
+        }
+
+        #court{
+            left: 500%;
+        }
+
+        .box{
+            float: left;
+            padding-bottom: 30px;
+            size: 500px;
+        }
+
+        #link{
+            text-align: center;
+            font-size: large;
+            display: none;
+        }
+
+        /*extra栏*/
+        #menu_extra{
+            width: 1200px;
+            height: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            display: none;
+        }
+
+        #choose_extra{
+            width: 100%;
+            height: 60px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 25px;
+            font-family: 华文楷体,sans-serif;
+            font-weight: bold;
+            overflow: hidden;
+            border-bottom: 5px solid darkgrey;
+        }
+
+        #choose_extra label{
+            float: left;   /*靠左浮动*/
+            height: 56px;
+            overflow: hidden;
+            width: 227.5px;
+            padding: 0 2px;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            border-left: 4px groove darkgrey;
+            border-right: 4px groove darkgrey;
+            border-top: 4px groove darkgrey;
+            line-height: 56px;
+            background: #6f94c6;
+            cursor: pointer;
+        }
+
+        #choose_extra label:hover{
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+
+        #choose_extra label:active{
+            box-shadow: 0 5px #666;
+            transform: translateY(3px);
+        }
+
+        #choose_extra input{
+            display: none;
+        }
+
+        #choose_extra input:checked{
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+
+        #tab_extra{
+            position: relative;
+            height: 90%;
+            width: 100%;
+
+        }
+
+
+        #tab_extra section{
+            position: absolute;
+            display: inline-block;
+            width: 99.15%;
+            height: 100%;
+            border-left: 4px groove darkgrey;    /*菜单栏边框*/
+            border-right: 4px groove darkgrey;
+            border-bottom: 4px groove darkgrey;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            background: white;
+            text-align: left;
+        }
+
+        #verb{
+            left: 0;
+        }
+
+        #adj_adv{
+            left: 100%;
+        }
+
+        #extra1{
+            left: 200%;
+        }
+
+        #extra2{
+            left: 300%;
+        }
+
+        #extra3{
+            left: 400%;
+        }
+
+        .box_check{
+            height: 50px;
+            min-width: 200px;
+            overflow: auto;
+        }
+
+        .box_check label{
+            cursor: pointer;
+            transform: scale(2);
+        }
+
+        #uploadLabel{       /*保存案件标注*/
+            position: relative;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            text-align: center;
+            left: 0;
+            display: none;
+        }
+
+        #information{
+            position: relative;
+            left: 15%;
+            right: 85%;
+            display: none;
+        }
+
+        #confirm_information{     /*分词确认栏*/
+            text-align: left;
+            display: inline-block;
+            position: relative;
+            left: 100px;
+            width: 600px;
+            top: 0;
+            overflow: hidden;
+        }
+
+        #feature{     /*特征要素*/
+            text-align: left;
+            display: inline-block;
+            position: relative;
+            left: 100px;
+            width: 600px;
+            top: -78px;
+            overflow: hidden;
+        }
+
+        #confirm{    /*确认信息按钮*/
+            margin-top: 20px;
+            margin-bottom: 50px;
+            display: none;
+        }
+
+        .special_h2{
+            position: relative;
+            top: 0;
+            left: 0;
+            margin-bottom: 40px;
+        }
+
+        .confirm_text{
+            margin-bottom: 20px;
+        }
+
+        .label_span{
+            position: relative;
+            left: 0;
+            width: 100px;
+            float: left;
+            line-height: 45px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .modify{
+            position: relative;
+            left: 0;
+            font-size: 20px;
+            font-family: 华文楷体,sans-serif;
+        }
+
+        #findSimilar{       /*寻找相似案例按钮*/
+            position: relative;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            text-align: center;
+            left: 0;
+        }
+
+
+        #similar_href{     /*相似案例标题超链接*/
+            text-align: center;
+            font-size: 25px;
+            font-family: 华文楷体,sans-serif;
+            font-weight: bold;
+            display: none;
+        }
+
+        #spread_similar{     /*点击展开收起文本*/
+            text-align: center;
+            padding-bottom: 25px;
+            font-size: 20px;
+            font-family: 华文楷体,sans-serif;
+            font-weight: bold;
+            display: none;
+        }
+
+        #similar_content{    /*相似案例文本域*/
+            position: absolute;
+            border: 8px groove snow;
+            font-family: 宋体, sans-serif;
+            font-size:large;
+            left: 320px;
+            padding-top: 50px;
+            display: none;
+        }
+
+        #fileLabel{
+            position: relative;
+            left: 312px;
+            width: 150px;
+            height: 40px;
+            border: 2px solid #99D3F5;
+            border-radius: 4px;
+            background: #D0EEFF;
+            text-align: center;
+            font-size: 20px;
+            font-family: 华文楷体,sans-serif;
+            font-weight: bold;
+            line-height: 40px;
+            color: #1E88C7;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        #fileLabel:hover{
+        background: #AADFFD;
+        border-color: #78C3F3;
+        color: #004974;
+        text-decoration: none;
+}
+
+        #file{     /*文件input*/
+            display: none;
+        }
+
+        #txt_title{
+            position: relative;
+            left: 320px;
+        }
+    </style>
+</head>
+<body>
+<h1>司法数据分析大作业</h1>
+<div>
+    <h2>爬虫工具</h2>
+    <div id="Time">
+        开始日期<input type="datetime-local" id="startTime" class="button-time" name="startTime">
+        结束日期<input type="datetime-local" id="finishTime" class="button-time" name="finishTime">
+        <br>
+        <br>
+        关键词<input type="text" id="key" class="button-time" name="key">
+        <br>
+        <br>
+        爬取数量<input type="text" id="num" class="button-time" name="num">
+    </div>
+    <br>
+
+    <div id="Rep">
+        <input type="button" class="reptile" value="爬取案件" id="reptile">
+    </div>
+
+    <br>
+    <br>
+</div>
+
+<form>
+    <h2>案件展示</h2>
+    <div id="file_button">
+        <label id="fileLabel"><span>上传案例文件</span>
+            <input type="file" accept="*.txt" id="file" name="file" onchange="FileWord(this.files)">
+        </label>
+        <a id="txt_title" href="####">请点击左侧上传案例文件</a>
+    </div>
+    <div id="Text">
+        <textarea rows="30" cols="120" id="Word" name="Word"></textarea>
+    </div>
+    <br>
+    <div class="Button1">
+        <input type="button" id="uploadFile" class="button-text" value="上传进行提取">
+        <input type="reset" id="reset" class="button-text" value="重置案例文件" >
+    </div>
+</form>
+<br>
+<br>
+
+<div id="menu">
+    <div id="choose">
+        <label id="1" onclick="change(this)">
+            <span>当事人</span>
+            <input type="radio" class="button-radio">
+        </label>
+        <label id="2" onclick="change(this)">
+            <span>性别</span>
+            <input type="radio" class="button-radio">
+        </label>
+        <label id="3" onclick="change(this)">
+            <span>民族</span>
+            <input type="radio" class="button-radio">
+        </label>
+        <label id="4" onclick="change(this)">
+            <span>出生地</span>
+            <input type="radio" class="button-radio">
+        </label>
+        <label id="5" onclick="change(this)">
+            <span>罪名</span>
+            <input type="radio" class="button-radio">
+        </label>
+        <label id="6" onclick="change(this)">
+            <span>相关法院</span>
+            <input type="radio" class="button-radio">
+        </label>
+    </div>
+    <div id="tab">
+        <section id="name">
+            <div class="module" id="name_module"></div>
+        </section>
+        <section id="gender">
+            <div class="module" id="gender_module"></div>
+        </section>
+        <section id="nationality">
+            <div class="module" id="nationality_module"></div>                                                            "
+        </section>
+        <section id="birthplace">
+            <div class="module" id="birthplace_module"></div>
+        </section>
+        <section id="crime">
+            <div class="module" id="crime_module"></div>
+        </section>
+        <section id="court">
+            <div class="module" id="court_module"></div>
+        </section>
+    </div>
+
+</div>
+
+<br>
+<div id="link">
+    <a id="link_spread" href="####">点击展开更多</a>
+</div>
+<br>
+
+<div id="menu_extra">
+    <div id="choose_extra">
+        <label id="7" onclick="change_extra(this)">
+            <span>动词</span>
+            <input type="radio" class="button-radio">
+        </label>
+        <label id="8" onclick="change_extra(this)">
+            <span>形容词&副词</span>
+            <input type="radio" class="button-radio">
+        </label>
+        <label id="9" onclick="change_extra(this)">
+            <span>补充1</span>
+            <input type="radio" class="button-radio">
+        </label>
+        <label id="10" onclick="change_extra(this)">
+            <span>补充2</span>
+            <input type="radio" class="button-radio">
+        </label>
+        <label id="11" onclick="change_extra(this)">
+            <span>补充3</span>
+            <input type="radio" class="button-radio">
+        </label>
+    </div>
+    <div id="tab_extra">
+        <section id="verb">
+            <div class="module_extra" id="verb_module"></div>
+        </section>
+        <section id="adj_adv">
+            <div class="module_extra" id="adj_adv_module"></div>
+        </section>
+        <section id="extra1">
+            <div class="module_extra" id="extra1_module"></div>
+        </section>
+        <section id="extra2">
+            <div class="module_extra" id="extra2_module"></div>
+        </section>
+        <section id="extra3">
+            <div class="module_extra" id="extra3_module"></div>
+        </section>
+    </div>
+</div>
+
+<div class="Button1" id="confirm">
+    <input type="button" class="reptile" value="确认信息">
+</div>
+
+<br>
+<div class="Button1" id="confirm">
+    <input type="button" class="reptile" value="确认信息">
+</div>
+
+<div id="information">
+    <div id="confirm_information">
+        <h2 class="special_h2">分词标注</h2>
+        <div class="confirm_text">
+            <label>
+                <span class="label_span">当事人</span>
+                <input type="text" class="button-time modify" id="label_name">
+            </label>
+        </div>
+        <div class="confirm_text">
+            <label>
+                <span class="label_span">性别</span>
+                <input type="text" class="button-time modify" id="label_gender">
+            </label>
+        </div>
+        <div class="confirm_text">
+            <label>
+                <span class="label_span">民族</span>
+                <input type="text" class="button-time modify" id="label_nationality">
+            </label>
+        </div>
+        <div class="confirm_text">
+            <label>
+                <span class="label_span">出生地</span>
+                <input type="text" class="button-time modify" id="label_birthplace">
+            </label>
+        </div>
+        <div class="confirm_text">
+            <label>
+                <span class="label_span">罪名</span>
+                <input type="text" class="button-time modify" id="label_crime">
+            </label>
+        </div>
+        <div class="confirm_text">
+            <label>
+                <span class="label_span">相关法院</span>
+                <input type="text" class="button-time modify" id="label_court">
+            </label>
+        </div>
+        <div class="confirm_text">
+            <label>
+                <span class="label_span">补充</span>
+                <input type="text" class="button-time modify" id="label_extra">
+            </label>
+        </div>
+    </div>
+
+    <div id="feature">
+        <h2 class="special_h2">特征要素</h2>
+        <div class="confirm_text">
+            <label>
+                <span class="label_span">事故类型</span>
+                <input type="text" class="button-time modify" id="label_accident">
+            </label>
+        </div>
+        <div class="confirm_text">
+            <label>
+                <span class="label_span">罪名</span>
+                <input type="text" class="button-time modify" id="label_guilt">
+            </label>
+        </div>
+        <div class="confirm_text">
+            <label>
+                <span class="label_span">主次责任</span>
+                <input type="text" class="button-time modify" id="label_blame">
+            </label>
+        </div>
+        <div class="confirm_text">
+            <label>
+                <span class="label_span">减刑因素</span>
+                <input type="text" class="button-time modify" id="label_reduce">
+            </label>
+        </div>
+        <div class="confirm_text">
+            <label>
+                <span class="label_span">加刑因素</span>
+                <input type="text" class="button-time modify" id="label_add">
+            </label>
+        </div>
+        <div class="confirm_text">
+            <label>
+                <span class="label_span">判决结果</span>
+                <input type="text" class="button-time modify" id="label_result">
+            </label>
+        </div>
+    </div>
+</div>
+
+
+<div class="Button1" id="uploadLabel">
+    <input type="button" class="button-text" value="保存案件标注">
+</div>
+
+<div>
+    <h2>相似案例</h2>
+    <div class="Button1" id="findSimilar">
+        <input type="button" class="button-text" value="寻找相似案例">
+    </div>
+    <div id="similar_href">
+        <a id="similar_title" href="####"></a>
+    </div>
+    <div id="spread_similar">
+        点击展开相似案件内容
+    </div>
+    <textarea readonly rows="30" cols="120" id="similar_content"></textarea>      <!--相似案例文本内容，只读-->
+</div>
+
+<script src={% static 'Jquery/jquery-3.3.0.min.js' %}></script>
+<script>
+    function change(temp){
+        var Tab=document.getElementById('tab');
+        Tab.style.left=-(temp.id-1)+'00%';    //切换效果
+    }
+
+    function change_extra(temp){
+        var Tab_extra=document.getElementById("tab_extra");
+        Tab_extra.style.left=-(temp.id-7)+'00%';
+    }
+
+    function FileWord(files){
+        if (files.length) {
+            var file=files[0];
+            var reader=new FileReader();
+            reader.onload=function (){
+                document.getElementById("Word").value=this.result;   //this==reader
+            }
+            reader.readAsText(file,"GB2312");    //编码方式
+            const fileList=$("#file").val().split("\\");
+            const fileTitle=fileList[fileList.length-1];
+            document.getElementById("txt_title").innerText=fileTitle;
+        }
+    }
+
+    $(document).ready(function (){
+        $('#link_spread').click(function spread(){
+        var menu_extra=document.getElementById("menu_extra");
+        var link=document.getElementById("link_spread");
+        if (menu_extra.style.display==="none") {
+            menu_extra.style.display="block";
+            link.innerText="点击收起";
+        }else {
+            menu_extra.style.display="none";
+            link.innerText="点击展开更多";
+        }
+        return false;
+    })
+
+        $('#reptile').click(function (){
+            var jsonReptile={
+            startTime: $('#startTime').val(),
+            finishTime: $('#finishTime').val(),
+            key: $('#key').val(),
+            num: $('#num').val(),
+            }
+            $.ajax({
+                url: 'http://localhost:8000/APP1/',
+                type: 'post',
+                data: JSON.stringify($(jsonReptile)),
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (data){
+                    alert("爬取成功！文件已保存至"+data.path);
+                },
+                error: function () {
+                    alert("请正确输入相关信息！");
+                }
+            })
+        })
+
+        $("#uploadFile").click(function(){
+            var jsonText={
+                text:$("#Word").val(),
+            }
+            $.ajax({
+                url: 'http://localhost:8000/APP2/',
+                type:'post',
+                data: JSON.stringify($(jsonText)),
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (data){    //data为返回的json对象,在这里为一个嵌套Json对象
+                    alert("显示分词结果");
+                    const cut=data.cut;   //cut为Json对象
+                    const feature=data.feature;    //feature为Json对象
+                    document.getElementById("menu").style.display="block";   //显示菜单栏
+                    document.getElementById("link").style.display="block";   //显示展开链接
+                    document.getElementById("confirm").style.display="block";    //显示确认信息按钮
+                    const name=cut.name;    //数组
+                    const gender=cut.gender;
+                    const nationality=cut.nationality;
+                    const birthplace=cut.birthplace;
+                    const crime=cut.crime;
+                    const court=cut.court;
+                    const verb=cut.verb;
+                    const adj_adv=cut.adj_adv;
+                    const extra1=cut.extra1;
+                    const extra2=cut.extra2;
+                    const extra3=cut.extra3;
+                    const element_name=document.getElementById("name_module");
+                    const element_gender=document.getElementById("gender_module");
+                    const element_nationality=document.getElementById("nationality_module");
+                    const element_birthplace=document.getElementById("birthplace_module");
+                    const element_crime=document.getElementById("crime_module");
+                    const element_court=document.getElementById("court_module");
+                    const element_verb=document.getElementById("verb_module");
+                    const element_adj_adv=document.getElementById("adj_adv_module");
+                    const element_extra1=document.getElementById("extra1_module");
+                    const element_extra2=document.getElementById("extra2_module");
+                    const element_extra3=document.getElementById("extra3_module");
+                    element_name.innerHTML=null;   //清空
+                    element_gender.innerHTML=null;
+                    element_nationality.innerHTML=null;
+                    element_birthplace.innerHTML=null;
+                    element_crime.innerHTML=null;
+                    element_court.innerHTML=null;
+                    element_verb.innerHTML=null;
+                    element_adj_adv.innerHTML=null;
+                    element_extra1.innerHTML=null;
+                    element_extra2.innerHTML=null;
+                    element_extra3.innerHTML=null;
+                    let i;
+                    for(i = 0; i<name.length; i++){    //遍历数组
+                        const str_name="<div class='box_check'><label><input type='checkbox' class='box box_name' value="+name[i]+">"+name[i]+"</label></div>";
+                        element_name.innerHTML+=str_name;
+                    }
+                    for(i = 0; i<gender.length; i++){
+                        const str_gender="<div class='box_check'><label><input type='checkbox' class='box box_gender' value="+gender[i]+">"+gender[i]+"</label></div>";
+                        element_gender.innerHTML+=str_gender;
+                    }
+                    for(i = 0; i<nationality.length; i++){
+                        const str_nationality="<div class='box_check'><label><input type='checkbox' class='box box_nationality' value="+nationality[i]+">"+nationality[i]+"</label></div>";
+                        element_nationality.innerHTML+=str_nationality;
+                    }
+                    for(i = 0; i<birthplace.length; i++){
+                        const str_birthplace="<div class='box_check'><label><input type='checkbox' class='box box_birthplace' value="+birthplace[i]+">"+birthplace[i]+"<label></div>"
+                        element_birthplace.innerHTML+=str_birthplace;
+                    }
+                    for(i = 0; i<crime.length; i++){
+                        const str_crime="<div class='box_check'><label><input type='checkbox' class='box box_crime' value="+crime[i]+">"+crime[i]+"</label></div>"
+                        element_crime.innerHTML+=str_crime;
+                    }
+                    for(i = 0; i<court.length; i++){
+                        const str_court="<div class='box_check'><label><input type='checkbox' class='box box_court' value="+court[i]+">"+court[i]+"</label></div>"
+                        element_court.innerHTML+=str_court;
+                    }
+                    for(i = 0; i<verb.length; i++){
+                        const str_verb="<div class='box_check'><label><input type='checkbox' class='box box_extra' value="+verb[i]+">"+verb[i]+"</label></div>"
+                        element_verb.innerHTML+=str_verb;
+                    }
+                    for(i = 0; i<adj_adv.length; i++){
+                        const str_adj_adv="<div class='box_check'><label><input type='checkbox' class='box box_extra' value="+adj_adv[i]+">"+adj_adv[i]+"</label></div>"
+                        element_adj_adv.innerHTML+=str_adj_adv;
+                    }
+                    for(i = 0; i<extra1.length; i++){
+                        const str_extra1="<div class='box_check'><label><input type='checkbox' class='box box_extra' value="+extra1[i]+">"+extra1[i]+"</label></div>"
+                        element_extra1.innerHTML+=str_extra1;
+                    }
+                    for(i = 0; i<extra2.length; i++){
+                        const str_extra2="<div class='box_check'><label><input type='checkbox' class='box box_extra' value="+extra2[i]+">"+extra2[i]+"</label></div>"
+                        element_extra2.innerHTML+=str_extra2;
+                    }
+                    for(i = 0; i<extra3.length; i++){
+                        const str_extra3="<div class='box_check'><label><input type='checkbox' class='box box_extra' value="+extra3[i]+">"+extra3[i]+"</label></div>"
+                        element_extra3.innerHTML+=str_extra3;
+                    }
+                    const accident=feature.事故类型
+                    const guilt=feature.罪名
+                    const blame=feature.主次责任
+                    const reduce=feature.减刑因素
+                    const add=feature.加刑因素
+                    const result=feature.判决结果
+                    const label_accident=document.getElementById("label_accident");
+                    const label_guilt=document.getElementById("label_guilt");
+                    const label_blame=document.getElementById("label_blame");
+                    const label_reduce=document.getElementById("label_reduce");
+                    const label_add=document.getElementById("label_add");
+                    const label_result=document.getElementById("label_result");
+                    label_accident.value=null;
+                    label_guilt.value=null;
+                    label_blame.value=null;
+                    label_reduce.value=null;
+                    label_add.value=null;
+                    label_result.value=null;
+                    for (i=0;i<accident.length;i++){
+                        label_accident.value+=accident[i]+" ";
+                    }
+                    for (i=0;i<guilt.length;i++){
+                        label_guilt.value+=guilt[i]+" ";
+                    }
+                    for (i=0;i<blame.length;i++){
+                        label_blame.value+=blame[i]+" ";
+                    }
+                    for (i=0;i<reduce.length;i++){
+                        label_reduce.value+=reduce[i]+" ";
+                    }
+                    for (i=0;i<add.length;i++){
+                        label_add.value+=add[i]+" ";
+                    }
+                    for (i=0;i<result.length;i++){
+                        label_result.value+=result[i]+" ";
+                    }
+                },
+                error: function () {
+                    alert("error");
+                }
+            })
+
+        })
+
+        $('#confirm').click(function (){
+            document.getElementById("information").style.display="block";   //显示分词标注和特征要素
+            document.getElementById("uploadLabel").style.display="block";    //显示保存按钮
+            const label_name = document.getElementById("label_name");
+            const label_gender=document.getElementById("label_gender");
+            const label_nationality=document.getElementById("label_nationality");
+            const label_birthplace=document.getElementById("label_birthplace");
+            const label_crime=document.getElementById("label_crime");
+            const label_court=document.getElementById("label_court");
+            const label_extra=document.getElementById("label_extra");
+            label_name.value=null;
+            label_gender.value=null;
+            label_nationality.value=null;
+            label_birthplace.value=null;
+            label_crime.value=null;
+            label_court.value=null;
+            label_extra.value=null;
+            $(".box_name:checked").each(function (){
+                label_name.value+=$(this).val()+" ";
+            })
+            $(".box_gender:checked").each(function (){
+                label_gender.value+=$(this).val()+" ";
+            })
+            $(".box_nationality:checked").each(function (){
+                label_nationality.value+=$(this).val()+" ";
+            })
+            $(".box_birthplace:checked").each(function (){
+                label_birthplace.value+=$(this).val()+" ";
+            })
+            $(".box_crime:checked").each(function (){
+                label_crime.value+=$(this).val()+" ";
+            })
+            $(".box_court:checked").each(function (){
+                label_court.value+=$(this).val()+" ";
+            })
+            $(".box_extra:checked").each(function (){
+                label_extra.value+=$(this).val()+" ";
+            })
+        })
+
+        $('#similar_title').click(function (){
+            const similar_content=document.getElementById("similar_content");
+            if(similar_content.style.display==="block"){
+                similar_content.style.display="none";
+                document.getElementById("spread_similar").innerText="点击展开相似案件内容";
+            }else {
+                similar_content.style.display="block";
+                document.getElementById("spread_similar").innerText="点击收起";
+            }
+        })
+
+        $('#uploadLabel').click(function (){
+            var jsonLabel={
+                title: $("#file").val(),    //带全路径的标题,list
+                name: $("#label_name").val().split(" ").filter(item=>item!=""),
+                gender: $("#label_gender").val().split(" ").filter(item=>item!=""),
+                nationality: $("#label_nationality").val().split(" ").filter(item=>item!=""),
+                birthplace: $("#label_birthplace").val().split(" ").filter(item=>item!=""),
+                crime: $("#label_crime").val().split(" ").filter(item=>item!=""),
+                court: $("#label_court").val().split(" ").filter(item=>item!=""),
+                extra: $("#label_extra").val().split(" ").filter(item=>item!=""),
+                accident: $("#label_accident").val().split(" ").filter(item=>item!=""),
+                guilt: $("#label_guilt").val().split(" ").filter(item=>item!=""),
+                blame: $("#label_blame").val().split(" ").filter(item=>item!=""),
+                reduce: $("#label_reduce").val().split(" ").filter(item=>item!=""),
+                add: $("#label_add").val().split(" ").filter(item=>item!=""),
+                result: $("#label_result").val().split(" ").filter(item=>item!=""),
+            }
+            $.ajax({
+                url: 'http://localhost:8000/APP3/',
+                type: 'post',
+                data: JSON.stringify($(jsonLabel)),
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (data){
+                    alert("保存成功！文件已保存至"+data.path);
+                },
+                error: function () {
+                    alert("error");
+                }
+            })
+        })
+
+
+        $('#findSimilar').click(function (){
+            var jsonContent={
+                key: $("#key").val(),
+                text: $("#Word").val(),
+            }
+            $.ajax({
+                url: 'http://localhost:8000/APP4/',
+                type: 'post',
+                data: JSON.stringify($(jsonContent)),
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (data){
+                    document.getElementById("similar_title").innerText=data.title;
+                    document.getElementById("similar_content").innerText=data.text;
+                    document.getElementById("similar_href").style.display="block";
+                    document.getElementById("spread_similar").style.display="block";
+                },
+                error: function () {
+                    alert("请输入关键词和文本内容！");
+                }
+            })
+        })
+    })
+</script>
+
+</body>
+</html>
