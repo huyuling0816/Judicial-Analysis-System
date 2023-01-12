@@ -1,0 +1,6 @@
+传给你的word2evc
+1.安装下 numpy genism scipy logging
+2.对word2wec_method里的方法getv 传入text 得到ndarray 向量v
+——todo：word2wec_method里的write_in方法里面所有的案件.text路径应该都要改成本地电脑上的
+——todo：找到max...(计算相似度方法已经写好)
+3.todo:存储文本和得到的v
